@@ -175,7 +175,7 @@ void connection_handler(int client_socket, struct sockaddr_in client_addr) {
 			if (found == NULL) strcpy(answer, "$-1\r\n");
 			else sprintf(answer, "$%ld\r\n%s\r\n", strlen(found->value), found->value);
 		
-			ret = write(client_socket, answer, sizeof("+OK\r\n"));
+			ret = write(client_socket, answer, sizeof(answer));
 			if (ret < 0) exit_with_error("Write error");
 		}
 
