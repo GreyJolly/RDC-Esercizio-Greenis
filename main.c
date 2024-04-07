@@ -207,10 +207,6 @@ void *connection_handler(void *args)
 		// Handle SET
 		if (set_detected)
 		{
-
-			printf("Handling set with key: %s, value: %s, expiry: %d\n", key_read, value_read, expiry_read);
-			fflush(stdout);
-
 			sem_wait(&semaphore);
 			found = findKeyInList(head, key_read);
 
@@ -233,9 +229,6 @@ void *connection_handler(void *args)
 		// Handle GET
 		if (get_detected)
 		{
-			printf("Handling get with key: %s\n", key_read);
-			fflush(stdout);
-
 			sem_wait(&semaphore);
 
 			head = removeOldNodes(head);
